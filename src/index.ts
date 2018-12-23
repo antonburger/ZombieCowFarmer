@@ -2,6 +2,7 @@ import { Map } from "./map.js";
 import { GameState } from "./gamestate.js";
 import * as Game from "./gameloop.js";
 import { MilkingShed, Cow } from "./gameobject.js";
+import { GameRender } from "./gamerender.js";
 
 const sampleMap = new Map(10, 10);
 const gameState = new GameState(sampleMap, 200);
@@ -16,6 +17,9 @@ const cows = d3.range(10).map(i => {
     return cow;
 });
 gameState.gameObjects.concat(cows);
+const renderer = new GameRender;
+renderer.init(d3.select("svg"));
 
-Game.mainLoop(gameState);
+Game.init(gameState);
+Game.mainLoop(renderer, gameState);
 

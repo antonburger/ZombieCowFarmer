@@ -1,25 +1,85 @@
 import { GameState } from "./gamestate.js";
+import { Pair } from "./primitive.js";
 
 export abstract class GameObject {
-    public x: number;
-    public y: number;
-    public imgUrl: string;
+    constructor(public readonly id: string) {
 
-    move(x, y) {
     }
 
+    public x: number;
+    public y: number;
+
+    public dx: number;
+    public dy: number;
+
     abstract update(gameState: GameState);
+
+    moveTo(x, y) {
+        this.x = x;
+        this.y = y;
+    }
+
+    // This method should be called by other objects (ie fences)
+    reverseDirectionX(gameState: GameState) {
+        this.dx *= -1;
+    }
+
+    reverseDirectionY(gameState: GameState) {
+        this.dy *= -1;
+    }
+
+    reflectDirection(gameState: GameState){
+        const temp = this.dx;
+        this.dx = this.dy;
+        this.dy = temp;
+    }
+
+    setDirection(dx: number, dy :number){
+        this.dx = dx;
+        this.dy = dy;
+    }
+
 }
 
 export class Cow extends GameObject {
-    update(gameState: GameState) {
-        throw new Error("Method not implemented.");
+    private moves: Pair[] = [];
+
+    constructor() {
+        super("cow");
     }
 
+    update(gameState: GameState) {
+        if (this.moves.length == 0){
+            if (this.dx > 0){
+                this.moves.push(new Pair(this.dx, 0))
+            }
+            if (this.dy > 0){
+                this.moves.push(new Pair(0, this.dy))
+            }            
+        }
+
+        const direction = this.moves[0];
+        this.moves = this.moves.slice(1);
+        
+        this.x += direction.x;
+        this.y += direction.y;
+    }
 }
 
 export class MilkingShed extends GameObject {
+    constructor() {
+        super("shed");
+    }
+
     update(gameState: GameState) {
-        throw new Error("Method not implemented.");
+    }
+}
+
+export class Fence extends GameObject {
+    constructor() {
+        super("fence");
+    }
+
+    update(gameState: GameState) {
     }
 }

@@ -1,18 +1,17 @@
 import { GameState } from "./gamestate.js";
+import { GameRender } from "./gamerender";
 
 function update(state: GameState) {
     state.clock++;
-    d3.select("#foo").text(state.clock);
 }
 
-// Draws something to screen
-function render(state: GameState) {
-
+export function init(state: GameState) {
+    
 }
 
-export function mainLoop(state: GameState) {
+export function mainLoop(renderer: GameRender, state: GameState) {
     update(state);
-    render(state);
+    renderer.render();
 
-    setTimeout(() => mainLoop(state), state.tickSpeedMs);
+    setTimeout(() => mainLoop(renderer, state), state.tickSpeedMs);
 }
