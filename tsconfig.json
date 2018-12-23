@@ -3,7 +3,8 @@
         "src/**/*.ts"
     ],
     "compilerOptions": {
-        "outFile": "dist/js/index.js",
+        "module": "es6",
+        "outDir": "dist/js",
         "target": "es6",
         "noImplicitReturns": true,
         "noImplicitThis": true,
