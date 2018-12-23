@@ -1,0 +1,13 @@
+.tile-background {
+    stroke: blue;
+    fill: none;
+}
+
+.background .col image {
+    opacity: 0.25;
+}
+
+svg {
+    border: 1px solid black;
+    max-height: 600px;
+}

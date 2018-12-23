@@ -5,7 +5,7 @@ export class Tile {
 }
 
 export class Map {
-    private tiles: Tile[][];
+    public readonly tiles: Tile[][];
 
     constructor(public readonly width: number, public readonly height: number) {
         this.tiles = Array.from({length: height});

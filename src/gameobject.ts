@@ -20,15 +20,15 @@ export abstract class GameObject {
     }
 
     // This method should be called by other objects (ie fences)
-    reverseDirectionX(gameState: GameState) {
+    reverseDirectionX() {
         this.dx *= -1;
     }
 
-    reverseDirectionY(gameState: GameState) {
+    reverseDirectionY() {
         this.dy *= -1;
     }
 
-    reflectDirection(gameState: GameState){
+    reflectDirection(){
         const temp = this.dx;
         this.dx = this.dy;
         this.dy = temp;
