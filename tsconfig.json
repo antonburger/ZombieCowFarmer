@@ -1,6 +1,9 @@
 {
+    "include": [
+        "src/**/*.ts"
+    ],
     "compilerOptions": {
-        "outFile": "dist/index.js",
+        "outFile": "dist/js/index.js",
         "target": "es6",
         "noImplicitReturns": true,
         "noImplicitThis": true,
