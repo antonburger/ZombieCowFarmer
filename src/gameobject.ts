@@ -1,8 +1,9 @@
-import { GameState } from "./gamestate";
+import { GameState } from "./gamestate.js";
 
 export abstract class GameObject {
-    private x: number;
-    private y: number;
+    public x: number;
+    public y: number;
+    public imgUrl: string;
 
     move(x, y) {
     }
@@ -15,4 +16,10 @@ export class Cow extends GameObject {
         throw new Error("Method not implemented.");
     }
 
+}
+
+export class MilkingShed extends GameObject {
+    update(gameState: GameState) {
+        throw new Error("Method not implemented.");
+    }
 }
