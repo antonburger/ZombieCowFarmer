@@ -1,0 +1,14 @@
+{
+    "compilerOptions": {
+        "outFile": "dist/index.js",
+        "target": "es6",
+        "noImplicitReturns": true,
+        "noImplicitThis": true,
+        "lib": [
+            "es6",
+            "dom",
+            "scripthost",
+            "es2016.array.include",
+        ]
+    }
+}
