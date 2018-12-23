@@ -14,6 +14,16 @@
                 "kind": "build",
                 "isDefault": true
             }
+        },
+        {
+            "type": "npm",
+            "label": "Start Dev Server",
+            "script": "serve:dev",
+            "options": {
+                "cwd": "dist"
+            },
+            "isBackground": true,
+            "problemMatcher": []
         }
     ]
 }
